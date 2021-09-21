@@ -21,12 +21,14 @@ for x in range(n+1):
     listY.append(((math.e**(-alpha*tn))) * (y0*math.cos(omega*tn) + y0*(alpha/omega)*math.sin(omega*tn)))
     tn = tn + increment
 
-nformat = "{:2d}"
-ynformat = "{: .8f}"
-tnformat = "{0:.2f}"
-
+row = "| {no:2d} | {time:.2f} | {y: .8f} |".format
+print("| No |   t  |  Simpangan  |")
 for i in range(len(listY)):
-    print(nformat.format(i) + ". t = " + tnformat.format(listT[i]) + ", y = " + ynformat.format(listY[i]))
+    # print(nformat.format(i) + ". t = " + tnformat.format(listT[i]) + ", y = " + ynformat.format(listY[i]))
+    print(row(no=i, time=listT[i], y=listY[i]))
 
 plt.plot(listT, listY)
+plt.title("Plot Simulasi Model Massa-Pegas-Peredam")
+plt.xlabel("waktu (s)")
+plt.ylabel("simpangan (m)")
 plt.show()
